@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'crudapp/main.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form method="POST">
+{% csrf_token %}
+    Name:<input type="text" id="name" name="name" value="{{emp.name}}"><br><br>
+    Age:<input type="number" id="age" name="age" value="{{emp.age}}"><br><br>
+  Email:<input type="email" id="email" name="email" value="{{emp.email}}"><br><br>
+    City:<input type="text" id="city" name="city" value="{{emp.city}}"><br><br>
+    <input type="submit" value="update">
+</form>
+
+</body>
+{% endblock %}
+</html>

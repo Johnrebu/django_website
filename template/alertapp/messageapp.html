@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'alertapp/base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <script src="{% static 'secondApp/js/jquery.js' %}"></script>
+</head>
+<body>
+<hr>
+<h2>This is a AlertApp</h2>
+<div class="alert_messages">
+    <a href="{% url 'success' %}">success</a><br>
+    <a href="{% url 'error' %}">error</a><br>
+    <a href="{% url 'warning' %}">warning</a><br>
+    <a href="{% url 'info' %}">info</a><br>
+</div>
+
+{% if messages %}
+{% for msg in messages %}
+
+<div class="alert">
+    <h2>{{msg}}</h2>
+</div>
+{% endfor %}
+{% endif %}
+<script>
+    $(document).ready(function(){$(".alert").hide(5000);});
+</script>
+
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPL TABLE</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'secondapp/css/table.css' %}">
+</head>
+<body>
+<h1>IPL TABLE </h1>
+<h2>This year of IPL is sponsored by {{name}}</h2>
+<h2>The table is updated at {{date}}</h2>
+<img src="{% static 'secondapp/images/ipl.jpg' %}">
+<img src="{% static 'secondapp/images/tata.jpg' %}">
+<table class="redTable">
+    <tr>
+        <th>Position</th>
+        <th>Team Name</th>
+        <th>Matches Played</th>
+        <th>Win</th>
+        <th>Loss</th>
+        <th>Points</th>
+        <th>NRR</th>
+    </tr>
+    <tr id="csk">
+        <td>1</td>
+        <td>CSK</td>
+        <td>10</td>
+        <td>7</td>
+        <td>3</td>
+        <td>14</td>
+        <td>+1.422</td>
+    </tr>
+    <tr class="rr">
+        <td>2</td>
+        <td>RR</td>
+        <td>9</td>
+        <td>5</td>
+        <td>4</td>
+        <td>10</td>
+        <td>+0.422</td>
+    </tr>
+</table>
+
+</body>
+</html>

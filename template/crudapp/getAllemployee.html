@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'crudapp/main.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'secondapp/css/table.css' %}">
+</head>
+<body>
+
+<table class="redTable">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>City</th>
+    </tr>
+    {% for emp in employee %}
+    <tr>
+        <td>{{emp.id}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.city}}</td>
+        <td><a href="{% url 'updateuser' emp.id %}">EDIT</a></td>
+        <td><a href="{% url 'deleteuser' emp.id %}">DELETE</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<a href="/crud/create"><button>Add Employee</button></a>
+
+<br><br>
+Has Previous:{{perpage.has_previous}}<br>
+Has Next:{{perpage.has_next}}<br>
+Current Page:{{perpage.number}}<br>
+no.of.pages:{{perpage.paginator.num_pages}}<br>
+<br>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+{% if perpage.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a>
+        <li class="page-item"><a class="page-link" href="?page={{perpage.previous_page_number}}">Previous</a>
+{% endif %}
+
+
+{% for num in range %}
+        {% if perpage.number == num %}
+        <li class="page-item"><a class="page-link" href="?page={{num}}"><strong>{{num}}</strong></a>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{num}}">{{num}}</a>
+        {% endif %}
+ {% endfor %}
+{% if perpage.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{perpage.next_page_number}}">Next</a>
+        <li class="page-item"><a class="page-link" href="?page={{perpage.paginator.num_pages}}">Last &raquo</a>
+{% endif %}
+    </ul>
+</nav>
+</body>
+{% endblock %}
+</html>

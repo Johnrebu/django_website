@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'secondapp/css/table.css' %}">
+</head>
+<body>
+
+<form method="GET" action="/model/search">
+    <input type="text" id="search" name="search" placeholder="search here....." value="{{request.GET.SEARCH}}">
+    <input type="submit" value="Search">
+</form>
+
+<h5>Total no of employees are {{count}}</h5>
+<table class="redTable">
+    <tr>
+        <th>Employee Id</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Designation</th>
+        <th>Phone Number</th>
+    </tr>
+    {% for emp in employees %}
+    <tr>
+        <td>{{emp.empid}}</td>
+        <td>{{emp.username}}</td>
+        <td>{{emp.password}}</td>
+        <td>{{emp.designation}}</td>
+        <td>{{emp.phno}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
